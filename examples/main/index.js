@@ -1,5 +1,6 @@
 import 'zone.js'; // for angular subapp
-import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start, initGlobalState } from '../../es';
+// import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start, initGlobalState } from '../../es';
+import { registerMicroApps, start } from '../../mirco-fe';
 import './index.less';
 
 /**
@@ -31,7 +32,7 @@ registerMicroApps(
     },
     {
       name: 'react15',
-      entry: '//localhost:7102',
+      entry: '//localhost:7102/',
       container: '#subapp-viewport',
       loader,
       activeRule: '/react15',
@@ -84,29 +85,29 @@ registerMicroApps(
   },
 );
 
-const { onGlobalStateChange, setGlobalState } = initGlobalState({
-  user: 'qiankun',
-});
+// const { onGlobalStateChange, setGlobalState } = initGlobalState({
+//   user: 'qiankun',
+// });
 
-onGlobalStateChange((value, prev) => console.log('[onGlobalStateChange - master]:', value, prev));
+// onGlobalStateChange((value, prev) => console.log('[onGlobalStateChange - master]:', value, prev));
 
-setGlobalState({
-  ignore: 'master',
-  user: {
-    name: 'master',
-  },
-});
+// setGlobalState({
+//   ignore: 'master',
+//   user: {
+//     name: 'master',
+//   },
+// });
 
 /**
  * Step3 设置默认进入的子应用
  */
-setDefaultMountApp('/react16');
+// setDefaultMountApp('/react16');
 
 /**
  * Step4 启动应用
  */
 start();
 
-runAfterFirstMounted(() => {
-  console.log('[MainApp] first app mounted');
-});
+// runAfterFirstMounted(() => {
+//   console.log('[MainApp] first app mounted');
+// });
